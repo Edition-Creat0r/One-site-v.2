@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Profile | OneSite</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="onesiteNavigation"></div>
+
+    <header class="profile-header">
+      <h1>Your Profile</h1>
+      <p>Track quiz progress, streaks, and earned badges.</p>
+    </header>
+
+    <main class="profile-main">
+      <section class="profile-card">
+        <div class="profile-avatar">
+          OS
+        </div>
+
+        <div>
+          <h2 id="profileUsername">OneSite Learner</h2>
+          <p>Age group: 10+</p>
+          <p>Parent linked: Prototype account</p>
+        </div>
+      </section>
+
+      <section class="profile-stats">
+        <article class="stat-card">
+          <span>Quizzes completed</span>
+          <strong id="quizzesCompleted">0</strong>
+        </article>
+
+        <article class="stat-card">
+          <span>Best Space score</span>
+          <strong id="bestSpaceScore">0 / 5</strong>
+        </article>
+
+        <article class="stat-card">
+          <span>Current streak</span>
+          <strong id="currentStreak">0 days</strong>
+        </article>
+      </section>
+
+      <section class="badge-section">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">Achievements</p>
+            <h2>Your badges</h2>
+          </div>
+        </div>
+
+        <div id="badgeGrid" class="badge-grid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>OneSite Profile</p>
+    </footer>
+
+    <script src="profile.js"></script>
+  </body>
+</html>

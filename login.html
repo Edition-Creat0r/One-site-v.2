@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sign In | OneSite</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="login-page">
+  <div id="onesiteNavigation"></div>
+    <main class="login-container">
+      <section class="login-card">
+        <div class="login-brand-icon">1</div>
+
+        <p class="login-label">Welcome to OneSite</p>
+
+        <h1>Learn, create, and explore.</h1>
+
+        <p class="login-introduction">
+          Sign in to save your progress, continue lessons, earn badges, and
+          access features made for your age group.
+        </p>
+
+        <div class="login-provider-list">
+          <button
+            type="button"
+            class="login-provider-button"
+            data-provider="google"
+          >
+            <span class="provider-symbol google-symbol">G</span>
+
+            <span>Continue with Google</span>
+          </button>
+
+          <button
+            type="button"
+            class="login-provider-button"
+            data-provider="microsoft"
+          >
+            <span class="provider-symbol microsoft-symbol">⊞</span>
+
+            <span>Continue with Microsoft</span>
+          </button>
+
+          <button
+            type="button"
+            class="login-provider-button"
+            data-provider="apple"
+          >
+            <span class="provider-symbol apple-symbol">●</span>
+
+            <span>Continue with Apple</span>
+          </button>
+        </div>
+
+        <div class="login-divider">
+          <span></span>
+          <p>or</p>
+          <span></span>
+        </div>
+
+        <button
+          id="guestLoginButton"
+          type="button"
+          class="login-guest-button"
+        >
+          Continue as Guest
+        </button>
+
+        <p id="loginMessage" class="login-message"></p>
+
+        <div id="existingAccountNotice" class="existing-account-notice hidden">
+          <div id="existingAccountAvatar" class="existing-account-avatar">
+            🦊
+          </div>
+
+          <div>
+            <strong id="existingAccountName">Learner</strong>
+            <p>An account already exists on this device.</p>
+          </div>
+        </div>
+
+        <div class="login-prototype-notice">
+          <strong>Prototype sign-in</strong>
+
+          <p>
+            These buttons currently simulate signing in. Real Google,
+            Microsoft, and Apple authentication will be connected later.
+          </p>
+        </div>
+
+        <p class="login-terms">
+          By continuing, you agree to follow OneSite's community and safety
+          rules.
+        </p>
+      </section>
+
+      <aside class="login-side-card">
+        <p class="login-label">One account</p>
+
+        <h2>Everything in one place</h2>
+
+        <div class="login-benefit-list">
+          <div>
+            <span>📚</span>
+
+            <div>
+              <strong>Save learning progress</strong>
+              <p>Continue lessons and quizzes from your dashboard.</p>
+            </div>
+          </div>
+
+          <div>
+            <span>⭐</span>
+
+            <div>
+              <strong>Earn XP and badges</strong>
+              <p>Build your level as you learn and complete activities.</p>
+            </div>
+          </div>
+
+          <div>
+            <span>🛡️</span>
+
+            <div>
+              <strong>Age-appropriate access</strong>
+              <p>OneSite adjusts tools and safety controls by age group.</p>
+            </div>
+          </div>
+
+          <div>
+            <span>👨‍👩‍👧</span>
+
+            <div>
+              <strong>Parent approval</strong>
+              <p>Younger accounts require parent or guardian approval.</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <script src="auth.js"></script>
+    <script src="login.js"></script>
+  </body>
+</html>

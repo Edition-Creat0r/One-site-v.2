@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Science | OneSite</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="science-page">
+    <div id="onesiteNavigation"></div>
+
+    <main class="science-container">
+      <a href="topics.html" class="back-link">← Back to Topics</a>
+
+      <!-- Science hub -->
+      <section id="scienceHub">
+        <section class="science-hero">
+          <div>
+            <p class="science-label">OneSite Learning</p>
+            <h1>Science</h1>
+
+            <p>
+              Explore space, Earth, weather, plants, the human body, physics,
+              and chemistry.
+            </p>
+          </div>
+
+          <div class="science-hero-icon" aria-hidden="true">🔬</div>
+        </section>
+
+        <section class="science-section">
+          <div class="science-section-heading">
+            <div>
+              <p class="science-label">Choose a lesson</p>
+              <h2>Science lessons</h2>
+            </div>
+
+            <p id="scienceProgressText">0 of 7 lessons completed</p>
+          </div>
+
+          <div class="science-progress-track">
+            <div id="scienceProgressFill" class="science-progress-fill"></div>
+          </div>
+
+          <div id="scienceLessonGrid" class="science-lesson-grid">
+            <!-- science.js creates the lesson cards -->
+          </div>
+        </section>
+      </section>
+
+      <!-- Individual lesson -->
+      <section id="scienceLesson" class="hidden">
+        <button id="backToScienceButton" class="science-back-button" type="button">
+          ← Back to Science
+        </button>
+
+        <section class="science-lesson-hero">
+          <div>
+            <p id="lessonCategory" class="science-label">Science lesson</p>
+
+            <h1 id="lessonTitle">Lesson title</h1>
+
+            <p id="lessonIntroduction">
+              Lesson introduction appears here.
+            </p>
+
+            <div class="science-tags">
+              <span id="lessonLevel">Beginner</span>
+              <span id="lessonTime">5 minutes</span>
+            </div>
+          </div>
+
+          <div id="lessonIcon" class="science-lesson-icon" aria-hidden="true">
+            🚀
+          </div>
+        </section>
+
+        <section class="science-lesson-layout">
+          <article class="science-lesson-content">
+            <div id="lessonSections">
+              <!-- science.js creates lesson sections -->
+            </div>
+
+            <section class="science-summary-card">
+              <p class="science-label">Lesson summary</p>
+              <h2>What did you learn?</h2>
+
+              <ul id="lessonSummary"></ul>
+            </section>
+
+            <div class="science-actions">
+              <button
+                id="completeLessonButton"
+                class="science-primary-button"
+                type="button"
+              >
+                Mark lesson complete
+              </button>
+
+              <a
+                id="lessonQuizButton"
+                class="science-secondary-button"
+                href="quiz.html"
+              >
+                Take the quiz
+              </a>
+            </div>
+          </article>
+
+          <aside class="science-sidebar">
+            <section class="science-sidebar-card">
+              <p class="science-label">In this lesson</p>
+              <ol id="lessonOutline"></ol>
+            </section>
+
+            <section class="science-sidebar-card science-think-card">
+              <span>💡</span>
+              <h3>Think about it</h3>
+              <p id="lessonChallenge"></p>
+            </section>
+          </aside>
+        </section>
+      </section>
+    </main>
+
+    <footer class="home-footer">
+      <div>
+        <strong>OneSite</strong>
+        <p>Learn, create, and play safely.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="parents.html">Parents</a>
+      </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="notifications.js"></script>
+    <script src="xp.js"></script>
+    <script src="badges.js"></script>
+    <script src="nav.js"></script>
+    <script src="quiz.js"></script>  
+  </body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Dashboard | OneSite</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <div id="onesiteNavigation"></div>
+
+  <header class="profile-header">
+    <p class="section-label">
+      Your OneSite
+    </p>
+
+    <h1 id="dashboardWelcome">
+      Welcome!
+    </h1>
+
+    <p>
+      Track your learning, XP, levels, badges, and progress.
+    </p>
+  </header>
+
+  <main class="profile-main">
+    <section class="profile-card">
+      <div
+        id="dashboardAvatar"
+        class="profile-avatar"
+      >
+        🦊
+      </div>
+
+      <div>
+        <h2 id="dashboardName">
+          Learner
+        </h2>
+
+        <p id="dashboardAgeGroup">
+          OneSite Member
+        </p>
+
+        <p>
+          <strong>
+            Level
+            <span id="dashboardLevel">
+              1
+            </span>
+          </strong>
+        </p>
+      </div>
+    </section>
+
+    <section class="profile-stats">
+      <article class="stat-card">
+        <span>⭐ XP</span>
+        <strong id="dashboardXP">
+          0
+        </strong>
+      </article>
+
+      <article class="stat-card">
+        <span>📚 Lessons</span>
+        <strong id="dashboardLessons">
+          0
+        </strong>
+      </article>
+
+      <article class="stat-card">
+        <span>🧠 Quizzes</span>
+        <strong id="dashboardQuizzes">
+          0
+        </strong>
+      </article>
+    </section>
+
+    <section class="parent-panel">
+      <p class="section-label">
+        Level Progress
+      </p>
+
+      <h2>
+        Your next level
+      </h2>
+
+      <div class="progress-track">
+        <div
+          id="dashboardLevelProgress"
+          class="progress-bar"
+        ></div>
+      </div>
+
+      <p id="dashboardLevelText">
+        Start learning to earn XP.
+      </p>
+    </section>
+
+    <section class="parent-panel">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">
+            Achievements
+          </p>
+
+          <h2>Your Badges</h2>
+        </div>
+
+        <a
+          href="profile.html"
+          class="text-link"
+        >
+          View Profile →
+        </a>
+      </div>
+
+      <div
+        id="dashboardBadges"
+        class="badge-grid"
+      ></div>
+    </section>
+
+    <section class="parent-panel">
+      <p class="section-label">
+        Keep Learning
+      </p>
+
+      <h2>Continue your journey</h2>
+
+      <div class="feature-section">
+        <article class="feature-card">
+          <div class="feature-icon">
+            🔬
+          </div>
+
+          <h3>Science</h3>
+
+          <p>
+            Explore space, Earth, biology, and more.
+          </p>
+
+          <a href="science.html">
+            Continue learning →
+          </a>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            🧠
+          </div>
+
+          <h3>Quizzes</h3>
+
+          <p>
+            Test your knowledge and earn XP.
+          </p>
+
+          <a href="quiz.html">
+            Take a quiz →
+          </a>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            🎨
+          </div>
+
+          <h3>Create</h3>
+
+          <p>
+            Build your own OneSite projects.
+          </p>
+
+          <a href="creator.html">
+            Open Creator Studio →
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="parent-panel">
+      <h2>Account</h2>
+
+      <p id="dashboardAccountStatus">
+        Signed in.
+      </p>
+
+      <button
+        id="dashboardSignOutButton"
+        class="secondary-button"
+        type="button"
+      >
+        Sign Out
+      </button>
+    </section>
+  </main>
+
+  <footer>
+    <p>OneSite</p>
+
+    <p class="footer-note">
+      Learn • Create • Explore
+    </p>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="notifications.js"></script>
+  <script src="xp.js"></script>
+  <script src="badges.js"></script>
+  <script src="nav.js"></script>
+  <script src="quiz.js"></script>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const account =
+        typeof getOneSiteAccount === "function"
+          ? getOneSiteAccount()
+          : JSON.parse(
+              localStorage.getItem("onesiteAccount") ||
+                "null"
+            );
+
+      if (!account) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      if (
+        typeof ensureOneSiteStats === "function"
+      ) {
+        ensureOneSiteStats(account);
+      }
+
+      const stats = account.stats || {};
+
+      document.getElementById(
+        "dashboardWelcome"
+      ).textContent =
+        `Welcome, ${
+          account.displayName || "Learner"
+        }!`;
+
+      document.getElementById(
+        "dashboardName"
+      ).textContent =
+        account.displayName || "Learner";
+
+      document.getElementById(
+        "dashboardAvatar"
+      ).textContent =
+        account.avatar || "🦊";
+
+      document.getElementById(
+        "dashboardXP"
+      ).textContent =
+        stats.xp || 0;
+
+      document.getElementById(
+        "dashboardLevel"
+      ).textContent =
+        stats.level || 1;
+
+      document.getElementById(
+        "dashboardLessons"
+      ).textContent =
+        stats.lessonsCompleted || 0;
+
+      document.getElementById(
+        "dashboardQuizzes"
+      ).textContent =
+        stats.quizzesCompleted || 0;
+
+      const groupNames = {
+        kid: "Kids Learning · Ages 5–11",
+        youth: "Youth Learning · Ages 12–15",
+        "older-teen":
+          "Older Teen · Ages 16–17",
+        creator:
+          "Young Adult · Ages 18–22",
+        adult: "Adult Member · Ages 23+"
+      };
+
+      document.getElementById(
+        "dashboardAgeGroup"
+      ).textContent =
+        groupNames[account.ageGroup] ||
+        "OneSite Member";
+
+      if (
+        typeof getLevelProgress ===
+        "function"
+      ) {
+        const progress =
+          getLevelProgress(stats.xp || 0);
+
+        document.getElementById(
+          "dashboardLevelProgress"
+        ).style.width =
+          `${progress.percent}%`;
+
+        const levelText =
+          document.getElementById(
+            "dashboardLevelText"
+          );
+
+        if (
+          progress.nextLevelXP === null
+        ) {
+          levelText.textContent =
+            "You reached the current maximum level!";
+        } else {
+          levelText.textContent =
+            `${progress.xpRemaining} XP until Level ${
+              progress.level + 1
+            }.`;
+        }
+      }
+
+      const badgeContainer =
+        document.getElementById(
+          "dashboardBadges"
+        );
+
+      const badges =
+        Array.isArray(stats.badges)
+          ? stats.badges
+          : [];
+
+      if (badges.length === 0) {
+        badgeContainer.innerHTML = `
+          <article class="badge-card locked-badge">
+            <div class="badge-icon">
+              🔒
+            </div>
+
+            <div>
+              <h3>No badges yet</h3>
+
+              <p>
+                Complete lessons and quizzes to unlock achievements.
+              </p>
+
+              <span class="badge-status">
+                Keep learning!
+              </span>
+            </div>
+          </article>
+        `;
+      } else {
+        badgeContainer.innerHTML = "";
+
+        badges.forEach(function (badge) {
+          const card =
+            document.createElement(
+              "article"
+            );
+
+          card.className =
+            "badge-card earned-badge";
+
+          if (
+            typeof badge === "string"
+          ) {
+            const badgeInfo =
+              typeof getOneSiteBadge ===
+              "function"
+                ? getOneSiteBadge(badge)
+                : null;
+
+            card.innerHTML = `
+              <div class="badge-icon">
+                ${
+                  badgeInfo
+                    ? badgeInfo.icon
+                    : "🏅"
+                }
+              </div>
+
+              <div>
+                <h3>
+                  ${
+                    badgeInfo
+                      ? badgeInfo.name
+                      : badge
+                  }
+                </h3>
+
+                <p>
+                  ${
+                    badgeInfo
+                      ? badgeInfo.description
+                      : "OneSite achievement"
+                  }
+                </p>
+
+                <span class="badge-status">
+                  Earned
+                </span>
+              </div>
+            `;
+          } else {
+            card.innerHTML = `
+              <div class="badge-icon">
+                ${badge.icon || "🏅"}
+              </div>
+
+              <div>
+                <h3>
+                  ${badge.name || "Achievement"}
+                </h3>
+
+                <p>
+                  ${
+                    badge.description ||
+                    "OneSite achievement"
+                  }
+                </p>
+
+                <span class="badge-status">
+                  Earned
+                </span>
+              </div>
+            `;
+          }
+
+          badgeContainer.appendChild(
+            card
+          );
+        });
+      }
+
+      const status =
+        document.getElementById(
+          "dashboardAccountStatus"
+        );
+
+      status.textContent =
+        `Signed in as ${
+          account.displayName || "Learner"
+        } using ${
+          account.signInProvider || "OneSite"
+        }.`;
+
+      document.getElementById(
+        "dashboardSignOutButton"
+      ).addEventListener(
+        "click",
+        function () {
+          if (
+            typeof signOutOneSite ===
+            "function"
+          ) {
+            signOutOneSite();
+          } else {
+            localStorage.removeItem(
+              "onesiteSession"
+            );
+
+            window.location.href =
+              "index.html";
+          }
+        }
+      );
+
+      if (
+        typeof checkOneSiteBadges ===
+        "function"
+      ) {
+        checkOneSiteBadges();
+      }
+    })();
+  </script>
+</body>
+</html>

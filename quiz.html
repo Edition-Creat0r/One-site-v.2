@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Quizzes | OneSite</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="onesiteNavigation"></div>
+
+  <header class="quiz-header">
+    <p class="section-label">OneSite Learning</p>
+    <h1>Quiz Center</h1>
+
+    <p>
+      Test your knowledge, earn XP, unlock badges, and improve your
+      score.
+    </p>
+  </header>
+
+  <main class="quiz-main">
+    <!-- QUIZ LIBRARY -->
+    <section
+      id="quizLibraryPanel"
+      class="quiz-panel"
+    >
+      <h2>Choose a Quiz</h2>
+
+      <p>
+        Each quiz rewards XP the first time you complete it.
+      </p>
+
+      <div
+        id="quizLibrary"
+        class="quiz-library-grid"
+      ></div>
+    </section>
+
+    <!-- QUIZ PLAYER -->
+    <section
+      id="quizPlayerPanel"
+      class="quiz-panel hidden"
+    >
+      <button
+        id="backToQuizLibrary"
+        class="secondary-button"
+        type="button"
+      >
+        ← Back to quizzes
+      </button>
+
+      <div class="quiz-top-row">
+        <div>
+          <p
+            id="quizCategory"
+            class="section-label"
+          ></p>
+
+          <h2 id="quizTitle">
+            Quiz
+          </h2>
+        </div>
+
+        <strong id="quizQuestionCounter">
+          Question 1 of 5
+        </strong>
+      </div>
+
+      <div class="quiz-progress-track">
+        <div
+          id="quizProgressBar"
+          class="quiz-progress-bar"
+        ></div>
+      </div>
+
+      <div class="question-card">
+        <h3 id="questionText">
+          Question
+        </h3>
+
+        <div
+          id="answerGrid"
+          class="answer-grid"
+        ></div>
+
+        <div
+          id="answerFeedback"
+          class="answer-feedback hidden"
+        ></div>
+
+        <button
+          id="nextQuestionButton"
+          class="hidden"
+          type="button"
+        >
+          Next Question
+        </button>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section
+      id="quizResultPanel"
+      class="quiz-panel hidden"
+    >
+      <p class="section-label">
+        Quiz Complete
+      </p>
+
+      <h2 id="resultTitle">
+        Great work!
+      </h2>
+
+      <div
+        id="resultScore"
+        class="result-score"
+      >
+        0 / 0
+      </div>
+
+      <p id="resultMessage"></p>
+
+      <div
+        id="quizRewardMessage"
+        class="badge-unlock-message"
+      ></div>
+
+      <div class="quiz-result-actions">
+        <button
+          id="retryQuizButton"
+          type="button"
+        >
+          Try Again
+        </button>
+
+        <button
+          id="chooseAnotherQuizButton"
+          class="secondary-button"
+          type="button"
+        >
+          Choose Another Quiz
+        </button>
+
+        <a
+          href="dashboard.html"
+          class="quiz-profile-link"
+        >
+          View Dashboard
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>OneSite Learning</p>
+
+    <p class="footer-note">
+      Learn • Practice • Create • Explore
+    </p>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="notifications.js"></script>
+  <script src="xp.js"></script>
+  <script src="badges.js"></script>
+  <script src="nav.js"></script>
+  <script src="quiz.js"></script>
+</body>
+</html>

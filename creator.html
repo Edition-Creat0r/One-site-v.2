@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Creator Studio | OneSite</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">1</span>
+        <span>OneSite</span>
+      </a>
+    
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="parents.html">Parents</a>
+      </div>
+    </nav>
+
+    <header class="creator-header">
+      <h1>OneSite Creator Studio</h1>
+
+      <p>
+        Create documents, quizzes, slides, and media projects.
+      </p>
+    </header>
+
+    <main class="creator-main">
+      <section class="creator-panel">
+        <p class="section-label">New project</p>
+        <h2>Create content</h2>
+
+        <div class="creator-type-grid">
+          <button
+            class="creator-type-button active-creator-type"
+            type="button"
+            data-type="document"
+          >
+            <span>📄</span>
+            Document
+          </button>
+
+          <button
+            class="creator-type-button"
+            type="button"
+            data-type="quiz"
+          >
+            <span>🧠</span>
+            Quiz
+          </button>
+
+          <button
+            class="creator-type-button"
+            type="button"
+            data-type="slides"
+          >
+            <span>🖥️</span>
+            Slides
+          </button>
+
+          <button
+            class="creator-type-button"
+            type="button"
+            data-type="media"
+          >
+            <span>🎬</span>
+            Media
+          </button>
+        </div>
+
+        <p id="selectedTypeMessage">
+          Creating a document.
+        </p>
+
+        <label for="projectTitle">Project title</label>
+
+        <input
+          id="projectTitle"
+          type="text"
+          maxlength="80"
+          placeholder="Enter a title"
+        />
+
+        <label for="projectDescription">
+          Short description
+        </label>
+
+        <textarea
+          id="projectDescription"
+          rows="4"
+          maxlength="300"
+          placeholder="Describe your project"
+        ></textarea>
+
+        <label for="projectAgeRating">
+          Age rating
+        </label>
+
+        <select id="projectAgeRating">
+          <option value="Everyone">Everyone</option>
+          <option value="7+" selected>7+</option>
+          <option value="10+">10+</option>
+          <option value="13+">13+</option>
+          <option value="16+">16+</option>
+        </select>
+
+        <label for="projectVisibility">
+          Visibility
+        </label>
+
+        <select id="projectVisibility">
+          <option value="Draft" selected>Draft</option>
+          <option value="Private">Private</option>
+          <option value="Unlisted">Unlisted</option>
+          <option value="Submitted for review">
+            Submitted for review
+          </option>
+        </select>
+
+        <section id="documentFields" class="creator-extra-fields">
+          <h3>Document content</h3>
+
+          <label for="documentBody">
+            Main text
+          </label>
+
+          <textarea
+            id="documentBody"
+            rows="10"
+            placeholder="Write your document here"
+          ></textarea>
+        </section>
+
+        <section
+          id="quizFields"
+          class="creator-extra-fields hidden"
+        >
+          <h3>Quiz setup</h3>
+
+          <label for="quizQuestion">
+            First question
+          </label>
+
+          <input
+            id="quizQuestion"
+            type="text"
+            placeholder="Enter a question"
+          />
+
+          <label for="quizAnswerA">
+            Answer A
+          </label>
+
+          <input
+            id="quizAnswerA"
+            type="text"
+            placeholder="First answer"
+          />
+
+          <label for="quizAnswerB">
+            Answer B
+          </label>
+
+          <input
+            id="quizAnswerB"
+            type="text"
+            placeholder="Second answer"
+          />
+
+          <label for="quizAnswerC">
+            Answer C
+          </label>
+
+          <input
+            id="quizAnswerC"
+            type="text"
+            placeholder="Third answer"
+          />
+
+          <label for="quizAnswerD">
+            Answer D
+          </label>
+
+          <input
+            id="quizAnswerD"
+            type="text"
+            placeholder="Fourth answer"
+          />
+
+          <label for="quizCorrectAnswer">
+            Correct answer
+          </label>
+
+          <select id="quizCorrectAnswer">
+            <option value="0">Answer A</option>
+            <option value="1">Answer B</option>
+            <option value="2">Answer C</option>
+            <option value="3">Answer D</option>
+          </select>
+
+          <label for="quizExplanation">
+            Explanation
+          </label>
+
+          <textarea
+            id="quizExplanation"
+            rows="4"
+            placeholder="Explain why the answer is correct"
+          ></textarea>
+        </section>
+
+        <section
+          id="slidesFields"
+          class="creator-extra-fields hidden"
+        >
+          <h3>First slide</h3>
+
+          <label for="slideTitle">
+            Slide title
+          </label>
+
+          <input
+            id="slideTitle"
+            type="text"
+            placeholder="Enter the slide title"
+          />
+
+          <label for="slideText">
+            Slide text
+          </label>
+
+          <textarea
+            id="slideText"
+            rows="6"
+            placeholder="Enter slide content"
+          ></textarea>
+        </section>
+
+        <section
+          id="mediaFields"
+          class="creator-extra-fields hidden"
+        >
+          <h3>Media information</h3>
+
+          <label for="mediaUrl">
+            Image or video URL
+          </label>
+
+          <input
+            id="mediaUrl"
+            type="url"
+            placeholder="https://example.com/media"
+          />
+
+          <label for="mediaCaption">
+            Caption
+          </label>
+
+          <textarea
+            id="mediaCaption"
+            rows="4"
+            placeholder="Describe the media"
+          ></textarea>
+
+          <label for="mediaSource">
+            Source or credit
+          </label>
+
+          <input
+            id="mediaSource"
+            type="text"
+            placeholder="Creator or website name"
+          />
+        </section>
+
+        <div class="creator-actions">
+          <button id="saveProjectButton" type="button">
+            Save project
+          </button>
+
+          <button
+            id="clearProjectButton"
+            type="button"
+            class="secondary-button"
+          >
+            Clear form
+          </button>
+        </div>
+
+        <p id="creatorMessage" aria-live="polite"></p>
+      </section>
+
+      <section class="creator-panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">Your work</p>
+            <h2>Your projects</h2>
+          </div>
+
+          <span id="projectCount">0 projects</span>
+        </div>
+
+        <div id="projectList" class="project-list">
+          <p id="emptyProjectsMessage">
+            You have not created any projects yet.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>OneSite Creator Studio Prototype</p>
+    </footer>
+
+    <script src="creator.js"></script>
+  </body>
+</html>

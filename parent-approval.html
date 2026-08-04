@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Parent Approval | OneSite</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="parent-approval-page">
+    <div id="onesiteNavigation"></div>
+
+    <main class="parent-approval-container">
+      <section class="parent-approval-card">
+        <div class="parent-approval-icon">👨‍👩‍👧</div>
+
+        <p class="parent-approval-label">Parent or guardian required</p>
+
+        <h1>Approve this OneSite account</h1>
+
+        <p class="parent-approval-introduction">
+          This account belongs to a younger learner. A parent or guardian must
+          approve it before the learner can continue.
+        </p>
+
+        <div class="parent-child-summary">
+          <div id="childAvatar" class="parent-child-avatar">🦊</div>
+
+          <div>
+            <span>Learner</span>
+            <h2 id="childName">OneSite learner</h2>
+            <p id="childAge">Age information unavailable</p>
+          </div>
+        </div>
+
+        <section id="emailStep" class="approval-step">
+          <div class="approval-step-number">1</div>
+
+          <div class="approval-step-content">
+            <h2>Enter the parent email</h2>
+
+            <p>
+              Later, OneSite will send this code through Gmail or another email
+              service. For now, the code appears on this page for testing.
+            </p>
+
+            <form id="parentEmailForm">
+              <label for="parentEmail">Parent or guardian email</label>
+
+              <input
+                id="parentEmail"
+                type="email"
+                autocomplete="email"
+                placeholder="parent@example.com"
+                required
+              />
+
+              <button type="submit" class="approval-primary-button">
+                Generate approval code
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <section id="codeStep" class="approval-step hidden">
+          <div class="approval-step-number">2</div>
+
+          <div class="approval-step-content">
+            <h2>Enter the approval code</h2>
+
+            <p>
+              This prototype displays the code below. A real version would
+              email it to the parent.
+            </p>
+
+            <div class="prototype-code-box">
+              <span>Prototype approval code</span>
+              <strong id="displayedApprovalCode">000000</strong>
+            </div>
+
+            <form id="approvalCodeForm">
+              <label for="approvalCode">Six-digit code</label>
+
+              <input
+                id="approvalCode"
+                type="text"
+                inputmode="numeric"
+                maxlength="6"
+                placeholder="Enter 6 digits"
+                required
+              />
+
+              <button type="submit" class="approval-primary-button">
+                Approve account
+              </button>
+            </form>
+
+            <button
+              id="changeEmailButton"
+              class="approval-text-button"
+              type="button"
+            >
+              Use a different email
+            </button>
+          </div>
+        </section>
+
+        <section id="successStep" class="approval-success hidden">
+          <div class="approval-success-icon">✓</div>
+
+          <h2>Account approved</h2>
+
+          <p>
+            Parent approval has been saved. The learner can now use their
+            OneSite dashboard.
+          </p>
+
+          <a href="dashboard.html" class="approval-primary-button">
+            Continue to dashboard
+          </a>
+        </section>
+
+        <p id="approvalMessage" class="approval-message"></p>
+
+        <div class="parent-approval-notice">
+          <strong>Prototype notice</strong>
+
+          <p>
+            This does not send a real email or verify a person's identity. It
+            only tests how the future parent approval flow will work.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="parent-approval.js"></script>
+  </body>
+</html>

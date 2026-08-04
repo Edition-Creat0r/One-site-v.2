@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Join Class | OneSite</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="onesiteNavigation"></div>
+
+    <header class="join-header">
+      <h1>Join a OneSite Class</h1>
+      <p>Enter the classroom code provided by your teacher.</p>
+    </header>
+
+    <main class="join-main">
+      <section id="joinPanel" class="join-panel">
+        <label for="studentName">Nickname</label>
+
+        <input
+          id="studentName"
+          type="text"
+          maxlength="20"
+          placeholder="Enter your nickname"
+        />
+
+        <label for="joinCode">Six-digit class code</label>
+
+        <input
+          id="joinCode"
+          type="text"
+          inputmode="numeric"
+          maxlength="6"
+          placeholder="000000"
+        />
+
+        <button id="joinButton" type="button">
+          Join class
+        </button>
+
+        <p id="joinMessage" aria-live="polite"></p>
+      </section>
+
+      <section id="studentSession" class="join-panel hidden">
+        <p class="teacher-mode-label">
+          Teacher Mode Active
+        </p>
+
+        <h2 id="welcomeStudent"></h2>
+
+        <p id="assignedActivity"></p>
+
+        <div id="restrictionSummary" class="settings-summary"></div>
+
+        <a
+          id="startAssignedQuiz"
+          href="quiz.html"
+          class="topic-open-button"
+        >
+          Start assigned quiz
+        </a>
+
+        <p class="demo-note">
+          While Teacher Mode is active, unrelated OneSite sections are
+          considered locked in this prototype.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>OneSite Classroom Join</p>
+    </footer>
+
+    <script src="join.js"></script>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Teacher Mode | OneSite</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">1</span>
+        <span>OneSite</span>
+      </a>
+    
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="parents.html">Parents</a>
+      </div>
+    </nav>
+
+    <header class="teacher-header">
+      <h1>Teacher Mode</h1>
+      <p>Create a locked classroom quiz session.</p>
+    </header>
+
+    <main class="teacher-main">
+      <section class="teacher-panel">
+        <h2>Create a session</h2>
+
+        <label for="quizSelect">Assigned activity</label>
+
+        <select id="quizSelect">
+          <option value="space-quiz">
+            Beginner Space Quiz
+          </option>
+        </select>
+
+        <h3>Student restrictions</h3>
+
+        <label class="control-check">
+          <input id="lockGames" type="checkbox" checked />
+          Lock games
+        </label>
+
+        <label class="control-check">
+          <input id="lockArticles" type="checkbox" checked />
+          Lock articles
+        </label>
+
+        <label class="control-check">
+          <input id="lockStreaming" type="checkbox" checked />
+          Lock streaming
+        </label>
+
+        <label class="control-check">
+          <input id="lockVideos" type="checkbox" checked />
+          Lock videos
+        </label>
+
+        <label class="control-check">
+          <input id="lockChat" type="checkbox" checked />
+          Lock chat
+        </label>
+
+        <button id="createSessionButton" type="button">
+          Create classroom code
+        </button>
+
+        <p id="teacherMessage" aria-live="polite"></p>
+      </section>
+
+      <section id="sessionPanel" class="teacher-panel hidden">
+        <p class="section-label">Active classroom</p>
+
+        <h2>Class code</h2>
+
+        <div id="classCode" class="class-code">
+          ------
+        </div>
+
+        <p>
+          Students can open the Join Class page and enter this code.
+        </p>
+
+        <div id="sessionSummary" class="settings-summary"></div>
+
+        <div class="teacher-actions">
+          <button id="startSessionButton" type="button">
+            Start session
+          </button>
+
+          <button
+            id="endSessionButton"
+            type="button"
+            class="secondary-button"
+          >
+            End session
+          </button>
+        </div>
+
+        <p id="sessionStatus" aria-live="polite">
+          Waiting to start.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>OneSite Teacher Mode Prototype</p>
+    </footer>
+
+    <script src="teacher.js"></script>
+  </body>
+</html>

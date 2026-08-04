@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Parent Controls | OneSite</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="onesiteNavigation"></div>
+
+    <header class="parent-header">
+      <h1>OneSite Family</h1>
+
+      <p>
+        Manage content, quizzes, games, communication, AI help, and screen
+        time.
+      </p>
+    </header>
+
+    <main class="parent-main">
+      <!-- Locked PIN screen -->
+      <section id="lockedScreen" class="parent-panel">
+        <h2>Parent PIN</h2>
+
+        <p>
+          Enter the parent PIN to open the family controls.
+        </p>
+
+        <label for="pinInput">Six-digit PIN</label>
+
+        <input
+          id="pinInput"
+          type="password"
+          inputmode="numeric"
+          maxlength="6"
+          placeholder="Enter PIN"
+        />
+
+        <button id="unlockButton" type="button">
+          Unlock controls
+        </button>
+
+        <p class="demo-note">
+          Prototype PIN: <strong>123456</strong>
+        </p>
+
+        <p id="pinMessage" aria-live="polite"></p>
+      </section>
+
+      <!-- Parent controls -->
+      <section id="controlPanel" class="hidden">
+        <div class="parent-dashboard-header">
+          <div>
+            <h2>Child Profile</h2>
+            <p>Profile: OneSite Learner</p>
+          </div>
+
+          <button
+            id="lockButton"
+            type="button"
+            class="secondary-button"
+          >
+            Lock controls
+          </button>
+        </div>
+
+        <!-- Content controls -->
+        <section class="parent-panel">
+          <h2>Content and quizzes</h2>
+
+          <label for="ageRating">
+            Maximum allowed content rating
+          </label>
+
+          <select id="ageRating">
+            <option value="Everyone">Everyone</option>
+            <option value="7+">7+</option>
+            <option value="10+" selected>10+</option>
+            <option value="13+">13+</option>
+            <option value="16+">16+</option>
+          </select>
+
+          <label class="control-check">
+            <input id="hideBlockedContent" type="checkbox" checked />
+            Hide content above this rating
+          </label>
+
+          <label class="control-check">
+            <input id="allowArticles" type="checkbox" checked />
+            Allow learning articles
+          </label>
+
+          <label class="control-check">
+            <input id="allowQuizzes" type="checkbox" checked />
+            Allow quizzes
+          </label>
+
+          <label class="control-check">
+            <input id="allowUserDocs" type="checkbox" />
+            Allow user-created documents
+          </label>
+
+          <a href="quiz.html" class="parent-page-link">
+            Open Space Quiz
+          </a>
+        </section>
+
+        <!-- Creator controls -->
+        <section class="parent-panel">
+          <h2>Creator Studio</h2>
+
+          <label for="creatorAccess">
+            Creator access
+          </label>
+
+          <select id="creatorAccess">
+            <option value="Disabled">
+              Disabled
+            </option>
+
+            <option value="Private drafts only" selected>
+              Private drafts only
+            </option>
+
+            <option value="Parent-approved sharing">
+              Parent-approved sharing
+            </option>
+          </select>
+
+          <label class="control-check">
+            <input id="allowMediaLinks" type="checkbox" />
+            Allow external media links
+          </label>
+
+          <label class="control-check">
+            <input id="allowPublishing" type="checkbox" />
+            Allow projects to be submitted for review
+          </label>
+        </section>
+
+        <!-- AI controls -->
+        <section class="parent-panel">
+          <h2>OneSite AI Tutor</h2>
+
+          <label for="aiAccess">
+            AI assistance
+          </label>
+
+          <select id="aiAccess">
+            <option value="Disabled">
+              Disabled
+            </option>
+
+            <option value="Small hints only" selected>
+              Small hints only
+            </option>
+
+            <option value="Small and strong hints">
+              Small and strong hints
+            </option>
+
+            <option value="Guided explanations">
+              Guided explanations
+            </option>
+          </select>
+
+          <label for="dailyHintPoints">
+            Daily Hint Points:
+            <span id="dailyHintPointsValue">10 points</span>
+          </label>
+
+          <input
+            id="dailyHintPoints"
+            type="range"
+            min="0"
+            max="30"
+            step="1"
+            value="10"
+          />
+
+          <label class="control-check">
+            <input id="showAiUsage" type="checkbox" checked />
+            Show AI hint usage in activity reports
+          </label>
+
+          <label class="control-check">
+            <input id="allowExpertQuestions" type="checkbox" />
+            Allow “Chat with an Expert” questions
+          </label>
+        </section>
+
+        <!-- Games -->
+        <section class="parent-panel">
+          <h2>Games</h2>
+
+          <label for="gameAccess">
+            Game access
+          </label>
+
+          <select id="gameAccess">
+            <option value="No games">
+              No games
+            </option>
+
+            <option value="Approved games only" selected>
+              Approved games only
+            </option>
+
+            <option value="All age-appropriate games">
+              All age-appropriate games
+            </option>
+          </select>
+
+          <label for="gameMinutes">
+            Daily game limit:
+            <span id="gameMinutesValue">60 minutes</span>
+          </label>
+
+          <input
+            id="gameMinutes"
+            type="range"
+            min="0"
+            max="180"
+            step="15"
+            value="60"
+          />
+
+          <label class="control-check">
+            <input id="allowExternalGames" type="checkbox" />
+            Allow approved external games
+          </label>
+
+          <label class="control-check">
+            <input id="allowMultiplayer" type="checkbox" />
+            Allow multiplayer games
+          </label>
+
+          <label class="control-check">
+            <input id="allowPurchases" type="checkbox" />
+            Allow game purchases
+          </label>
+        </section>
+
+        <!-- Streaming -->
+        <section class="parent-panel">
+          <h2>Streaming and videos</h2>
+
+          <label for="streamingAccess">
+            Streaming access
+          </label>
+
+          <select id="streamingAccess">
+            <option value="Disabled" selected>
+              Disabled
+            </option>
+
+            <option value="Approved creators only">
+              Approved creators only
+            </option>
+
+            <option value="Age-appropriate streams">
+              Age-appropriate streams
+            </option>
+          </select>
+
+          <label for="streamingMinutes">
+            Daily streaming limit:
+            <span id="streamingMinutesValue">30 minutes</span>
+          </label>
+
+          <input
+            id="streamingMinutes"
+            type="range"
+            min="0"
+            max="180"
+            step="15"
+            value="30"
+          />
+
+          <label class="control-check">
+            <input id="allowVideos" type="checkbox" checked />
+            Allow approved educational videos
+          </label>
+
+          <label class="control-check">
+            <input id="allowLiveChat" type="checkbox" />
+            Allow live-stream chat
+          </label>
+
+          <label class="control-check">
+            <input id="allowBroadcasting" type="checkbox" />
+            Allow child to broadcast
+          </label>
+        </section>
+
+        <!-- Social -->
+        <section class="parent-panel">
+          <h2>Social and chat</h2>
+
+          <label for="chatLevel">
+            Allowed communication
+          </label>
+
+          <select id="chatLevel">
+            <option value="No communication">
+              No communication
+            </option>
+
+            <option value="Preset phrases only" selected>
+              Preset phrases only
+            </option>
+
+            <option value="Friends-only text chat">
+              Friends-only text chat
+            </option>
+          </select>
+
+          <label class="control-check">
+            <input id="allowFriendRequests" type="checkbox" />
+            Allow friend requests
+          </label>
+
+          <label class="control-check">
+            <input id="showOnlineStatus" type="checkbox" />
+            Show online status to friends
+          </label>
+
+          <div class="safety-warning">
+            Private messaging with adults cannot be enabled for child
+            accounts.
+          </div>
+        </section>
+
+        <!-- Schedule -->
+        <section class="parent-panel">
+          <h2>Schedule</h2>
+
+          <label for="weekdayStart">
+            Weekday access starts
+          </label>
+
+          <input id="weekdayStart" type="time" value="16:00" />
+
+          <label for="weekdayEnd">
+            Weekday access ends
+          </label>
+
+          <input id="weekdayEnd" type="time" value="20:00" />
+
+          <label for="weekendStart">
+            Weekend access starts
+          </label>
+
+          <input id="weekendStart" type="time" value="09:00" />
+
+          <label for="weekendEnd">
+            Weekend access ends
+          </label>
+
+          <input id="weekendEnd" type="time" value="21:00" />
+
+          <label class="control-check">
+            <input id="schoolMode" type="checkbox" />
+            Enable School Mode
+          </label>
+        </section>
+
+        <!-- Summary -->
+        <section class="parent-panel">
+          <h2>Current settings</h2>
+
+          <div id="settingsSummary" class="settings-summary">
+            Select settings and press Save.
+          </div>
+
+          <div class="parent-actions">
+            <button id="saveSettings" type="button">
+              Save settings
+            </button>
+
+            <button
+              id="resetSettings"
+              type="button"
+              class="secondary-button"
+            >
+              Reset
+            </button>
+          </div>
+
+          <p id="saveMessage" aria-live="polite"></p>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <p>OneSite Family Controls</p>
+    </footer>
+
+    <script src="parents.js"></script>
+  </body>
+</html>

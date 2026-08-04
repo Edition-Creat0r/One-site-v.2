@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Games | OneSite</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="onesiteNavigation"></div>
+    <header class="games-header">
+      <h1>OneSite Game Library</h1>
+
+      <p>
+        Explore selected games with clear descriptions and age ratings.
+      </p>
+    </header>
+
+    <main class="games-main">
+      <section class="games-panel">
+        <div class="games-toolbar">
+          <div>
+            <p class="section-label">Game collection</p>
+            <h2>Choose an experience</h2>
+          </div>
+
+          <label for="gameAgeFilter">
+            Age:
+            <select id="gameAgeFilter">
+              <option value="all">All ratings</option>
+              <option value="Everyone">Everyone</option>
+              <option value="7+">7+</option>
+              <option value="10+">10+</option>
+              <option value="13+">13+</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="gameList" class="game-library-grid"></div>
+
+        <p id="gameLibraryMessage" aria-live="polite"></p>
+      </section>
+
+      <section class="games-safety-note">
+        <h2>Leaving OneSite</h2>
+
+        <p>
+          Games currently open on another website. External websites may
+          have their own accounts, advertisements, chats, purchases, and
+          privacy rules. Ask a parent before opening an external game.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>OneSite Game Library Prototype</p>
+    </footer>
+
+    <script src="games.js"></script>
+  </body>
+</html>

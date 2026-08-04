@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Create Account | OneSite</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="account-page">
+    
+  <div id="onesiteNavigation"></div>
+
+    <main class="account-container">
+      <section class="account-card">
+        <div class="account-header">
+          <p class="account-label">Welcome to OneSite</p>
+          <h1>Create your profile</h1>
+
+          <p>
+            Your profile helps OneSite show the right lessons, tools, games,
+            and safety settings.
+          </p>
+        </div>
+
+        <form id="accountForm">
+          <div class="account-field">
+            <label for="displayName">Display name</label>
+
+            <input
+              id="displayName"
+              name="displayName"
+              type="text"
+              maxlength="24"
+              placeholder="Enter a display name"
+              required
+            />
+          </div>
+
+          <div class="account-field">
+            <label for="birthYear">Birth year</label>
+
+            <input
+              id="birthYear"
+              name="birthYear"
+              type="number"
+              min="1900"
+              max="2026"
+              placeholder="Example: 2013"
+              required
+            />
+
+            <small>
+              OneSite uses this to choose age-appropriate features.
+            </small>
+          </div>
+
+          <div class="account-field">
+            <label for="country">Country</label>
+
+            <select id="country" name="country" required>
+              <option value="">Choose a country</option>
+              <option value="US">United States</option>
+              <option value="CA">Canada</option>
+              <option value="IN">India</option>
+              <option value="UK">United Kingdom</option>
+              <option value="AU">Australia</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </div>
+
+          <fieldset class="avatar-section">
+            <legend>Choose an avatar</legend>
+
+            <div class="avatar-grid">
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="🦊" checked />
+                <span>🦊</span>
+              </label>
+
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="🐼" />
+                <span>🐼</span>
+              </label>
+
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="🐯" />
+                <span>🐯</span>
+              </label>
+
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="🦉" />
+                <span>🦉</span>
+              </label>
+
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="🚀" />
+                <span>🚀</span>
+              </label>
+
+              <label class="avatar-option">
+                <input type="radio" name="avatar" value="🤖" />
+                <span>🤖</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div id="accountPreview" class="account-preview">
+            <div id="previewAvatar" class="account-preview-avatar">🦊</div>
+
+            <div>
+              <p>Your profile</p>
+              <h2 id="previewName">New learner</h2>
+              <span id="previewGroup">Age group will appear here</span>
+            </div>
+          </div>
+
+          <p id="accountMessage" class="account-message"></p>
+
+          <button class="account-submit-button" type="submit">
+            Create my profile
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <script src="auth.js"></script>
+    <script src="account.js"></script>
+  </body>
+</html>

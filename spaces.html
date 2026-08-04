@@ -1,0 +1,231 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OneSite Spaces</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="spaces.css" />
+</head>
+<body class="spaces-page">
+  <div id="onesiteNavigation"></div>
+
+  <header class="spaces-header">
+    <div class="spaces-header-inner">
+      <p class="spaces-eyebrow">Communities, clubs, and projects</p>
+      <h1>OneSite Spaces</h1>
+      <p>Create a safe Space, choose an emoji, set an age rating, publish posts, and organize members with Space roles.</p>
+      <button id="openCreateSpaceButton" class="spaces-primary-button" type="button">+ Create a Space</button>
+    </div>
+  </header>
+
+  <main class="spaces-main">
+    <section id="spacesMessage" class="spaces-message hidden" aria-live="polite"></section>
+
+    <section id="createSpacePanel" class="spaces-panel hidden" aria-labelledby="createSpaceTitle">
+      <div class="spaces-panel-heading">
+        <div>
+          <p class="spaces-section-label">New Space</p>
+          <h2 id="createSpaceTitle">Create your Space</h2>
+        </div>
+        <button id="closeCreateSpaceButton" class="spaces-text-button" type="button">Cancel</button>
+      </div>
+
+      <form id="createSpaceForm">
+        <div class="spaces-form-grid">
+          <label class="spaces-field">
+            <span>Space name</span>
+            <input id="spaceNameInput" type="text" maxlength="50" placeholder="Example: Healthy Living Club" required />
+          </label>
+
+          <label class="spaces-field">
+            <span>Space emoji</span>
+            <input id="spaceEmojiInput" type="text" maxlength="8" value="🌟" placeholder="🌟" required />
+          </label>
+        </div>
+
+        <label class="spaces-field">
+          <span>Description</span>
+          <textarea id="spaceDescriptionInput" maxlength="300" rows="4" placeholder="What is this Space about?" required></textarea>
+        </label>
+
+        <div class="spaces-form-grid">
+          <label class="spaces-field">
+            <span>Age rating</span>
+            <select id="spaceAgeRatingInput" required>
+              <option value="0">Everyone</option>
+              <option value="8">Ages 8+</option>
+              <option value="12">Ages 12+</option>
+              <option value="16">Ages 16+</option>
+              <option value="18">Ages 18+</option>
+            </select>
+          </label>
+
+          <label class="spaces-field">
+            <span>Visibility</span>
+            <select id="spaceVisibilityInput" required>
+              <option value="private">Private</option>
+              <option value="unlisted">Unlisted</option>
+              <option value="public">Public prototype</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="spaces-check-row">
+          <input id="spaceRulesCheckbox" type="checkbox" required />
+          <span>I agree to keep this Space safe and appropriate for its selected age rating.</span>
+        </label>
+
+        <div class="spaces-form-actions">
+          <button class="spaces-primary-button" type="submit">Create Space</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="spaceLibraryPanel" class="spaces-panel" aria-labelledby="spaceLibraryTitle">
+      <div class="spaces-panel-heading">
+        <div>
+          <p class="spaces-section-label">Your communities</p>
+          <h2 id="spaceLibraryTitle">Your Spaces</h2>
+        </div>
+      </div>
+
+      <div id="spaceLibrary" class="spaces-library"></div>
+
+      <div id="emptySpacesState" class="spaces-empty-state hidden">
+        <div>🪐</div>
+        <h3>No Spaces yet</h3>
+        <p>Create your first club, team, or community.</p>
+      </div>
+    </section>
+
+    <section id="spaceViewerPanel" class="spaces-panel hidden" aria-labelledby="activeSpaceTitle">
+      <div class="spaces-viewer-top">
+        <button id="backToSpacesButton" class="spaces-text-button" type="button">← Back to Spaces</button>
+        <span id="spaceVerificationBadge" class="spaces-verification-badge">Prototype — not verified</span>
+      </div>
+
+      <div class="spaces-identity">
+        <div id="activeSpaceEmoji" class="spaces-identity-emoji">🌟</div>
+        <div>
+          <div class="spaces-title-row">
+            <h2 id="activeSpaceTitle">Space</h2>
+            <span id="activeSpaceAgeBadge" class="spaces-age-badge">Everyone</span>
+          </div>
+          <p id="activeSpaceDescription"></p>
+          <div class="spaces-meta-row">
+            <span id="activeSpaceVisibility"></span>
+            <span id="activeSpaceMemberCount"></span>
+            <span id="activeSpaceOwnerName"></span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="spaces-tabs" aria-label="Space sections">
+        <button class="spaces-tab active-space-tab" data-space-tab="posts" type="button">Posts</button>
+        <button class="spaces-tab" data-space-tab="members" type="button">Members & Roles</button>
+        <button class="spaces-tab" data-space-tab="settings" type="button">Settings</button>
+      </nav>
+
+      <section id="postsTabPanel" class="spaces-tab-panel">
+        <form id="createPostForm" class="spaces-post-composer">
+          <label for="spacePostInput">Add text to this Space</label>
+          <textarea id="spacePostInput" rows="4" maxlength="1000" placeholder="Write an announcement, update, idea, or discussion..." required></textarea>
+          <div class="spaces-post-actions">
+            <span id="postPermissionMessage"></span>
+            <button id="publishPostButton" class="spaces-primary-button" type="submit">Publish Post</button>
+          </div>
+        </form>
+        <div id="spacePostsList" class="spaces-post-list"></div>
+      </section>
+
+      <section id="membersTabPanel" class="spaces-tab-panel hidden">
+        <div class="spaces-members-layout">
+          <div>
+            <h3>Members</h3>
+            <div id="spaceMembersList" class="spaces-members-list"></div>
+          </div>
+
+          <form id="addMemberForm" class="spaces-member-form">
+            <h3>Add a prototype member</h3>
+
+            <label class="spaces-field">
+              <span>Display name</span>
+              <input id="memberNameInput" type="text" maxlength="40" placeholder="Member name" required />
+            </label>
+
+            <label class="spaces-field">
+              <span>Age</span>
+              <input id="memberAgeInput" type="number" min="5" max="120" placeholder="Age" required />
+            </label>
+
+            <label class="spaces-field">
+              <span>Role</span>
+              <select id="memberRoleInput" required>
+                <option value="viewer">Space Viewer</option>
+                <option value="contributor">Space Contributor</option>
+                <option value="helper">Space Helper</option>
+                <option value="admin">Space Admin</option>
+              </select>
+            </label>
+
+            <button id="addMemberButton" class="spaces-primary-button" type="submit">Add Member</button>
+            <p class="spaces-form-note">This is only prototype data. Real OneSite members will be added through invitations later.</p>
+          </form>
+        </div>
+      </section>
+
+      <section id="settingsTabPanel" class="spaces-tab-panel hidden">
+        <form id="spaceSettingsForm">
+          <div class="spaces-form-grid">
+            <label class="spaces-field">
+              <span>Space emoji</span>
+              <input id="settingsEmojiInput" type="text" maxlength="8" required />
+            </label>
+
+            <label class="spaces-field">
+              <span>Age rating</span>
+              <select id="settingsAgeRatingInput" required>
+                <option value="0">Everyone</option>
+                <option value="8">Ages 8+</option>
+                <option value="12">Ages 12+</option>
+                <option value="16">Ages 16+</option>
+                <option value="18">Ages 18+</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="spaces-field">
+            <span>Description</span>
+            <textarea id="settingsDescriptionInput" maxlength="300" rows="4" required></textarea>
+          </label>
+
+          <label class="spaces-field">
+            <span>Visibility</span>
+            <select id="settingsVisibilityInput" required>
+              <option value="private">Private</option>
+              <option value="unlisted">Unlisted</option>
+              <option value="public">Public prototype</option>
+            </select>
+          </label>
+
+          <button id="saveSpaceSettingsButton" class="spaces-primary-button" type="submit">Save Settings</button>
+        </form>
+
+        <div class="spaces-future-note"><strong>Later:</strong> image uploads, custom ranks, Community Mode, Subspaces, OneBux funding, real-money fundraising, moderator approval, and age verification.</div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="spaces-footer">
+    <p>OneSite Spaces prototype — data is stored only in this browser.</p>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="notifications.js"></script>
+  <script src="xp.js"></script>
+  <script src="badges.js"></script>
+  <script src="nav.js"></script>
+  <script src="spaces.js"></script>
+</body>
+</html>
